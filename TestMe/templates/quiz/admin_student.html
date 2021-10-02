@@ -1,0 +1,35 @@
+{% extends 'quiz/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <div class="d-flex justify-content-center">
+    <div class="container text-center">
+    <div class="row">
+
+    <div class="col align-self-center">
+    <div class="card shadow" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="loading Image">
+      <div class="card-body">
+        <h5 class="card-title"><a href="admin-view-student" style="text-decoration: none;color:black;">Total Student</a></h5>
+        <p class="card-text"><i class="fas fa-user-graduate f-left"></i><span>  {{total_student}}</span></p>
+      </div>
+    </div>
+    </div>
+
+    <div class="col align-self-center">
+    <div class="card shadow" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" class="card-img-top" alt="loading Image">
+      <div class="card-body">
+        <h5 class="card-title"><a href="admin-view-student-marks" style="text-decoration: none;color:black;">Student Marks</a></h5>
+        <p class="card-text"><i class="fas fa-sort-numeric-up f-left"></i></p>
+      </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+<br><br>
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+</head>
+<body>
+  {% include "quiz/navbar.html" %}
+
+  <span class="border rounded shadow">
+    <div class="m-2">
+    <div class="d-flex" style="width: 600px; margin: auto;">
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h2>Register</h2>
+          <p class="hint-text">Create your account.</p>
+          <div class="form-group">
+            <div class="row">
+              <div class="col">{% render_field userForm.first_name|attr:'required:true'  class="form-control" placeholder="First Name" %}</div>
+              <div class="col">{% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="Last Name" %}</div>
+            </div>        	
+          </div>
+          <div class="form-group">
+            {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="Username" %}
+          </div>
+          <div class="form-group">
+            {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="Password" %}
+          </div>
+              
+          <div class="form-group">
+            {% render_field studentForm.mobile|attr:'required:true'  class="form-control" placeholder="Mobile" %}
+          </div>
+          <div class="form-group">
+            {% render_field studentForm.address|attr:'required:true'  class="form-control" placeholder="Address" %}
+          </div>
+          <div class="form-group">
+            <label for="profile_pic">Profile Picture</label>
+            {% render_field studentForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+          </div>
+          <div class="form-group">
+                  <button type="submit" class="form-control btn btn-success btn-lg position-relative">Register Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </span>
+
+  {% include "quiz/footer.html" %}
+
+</body>
+</html>

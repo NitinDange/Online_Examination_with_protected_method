@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    {% include "quiz/navbar.html" %}
+      
+    <div class="px-4 py-5 my-5 text-center">
+      <h1 class="display-6">Hello, {{request.user.first_name}}</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Your account hasn't been approved yet. <br> Our Team is looking into you profile and will update your status soon.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <a
+            href="/logout"
+            type="button"
+            class="btn btn-primary btn-lg px-4 gap-3"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </div>
+    {% include "quiz/footer.html" %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<span class="border rounded shadow">
+  <div class="m-2" style="min-width: 500px">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Exam Name</th>
+          <th>Total Marks</th>
+          <th>Attempt</th>
+          <th>Exam Date</th>
+        </tr>
+      </thead>
+      {% for t in results %}
+      <tr>
+
+        <td> {{t.exam}}</td>
+        <td> {{t.marks}}</td>
+        <td>Attempt {{ forloop.counter }}</td>
+        <td> {{t.date}}</td>
+        
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</span>
+<br><br>
+
+{% endblock content %}

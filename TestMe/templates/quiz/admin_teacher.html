@@ -1,0 +1,74 @@
+{% extends 'quiz/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% comment %} 
+  
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-green order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="admin-view-pending-teacher" style="text-decoration: none;color:white;">Total Pending Teacher</a> </h6>
+            <h2 class="text-right"><i class="fas fa-spinner f-left"></i><span>{{pending_teacher}}</span></h2>
+            
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-yellow order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="admin-view-teacher-salary" style="text-decoration: none;color:white;">Total Teacher Salary</a></h6>
+            <h2 class="text-right"><i class="fas fa-rupee-sign f-left"></i><span>{{salary}}</span></h2>
+            
+          </div>
+        </div>
+      </div>
+  
+     
+    </div>
+  </div> {% endcomment %}
+
+    <div class="d-flex justify-content-center">
+    <div class="container text-center">
+    <div class="row">
+
+    
+    <div class="col align-self-center">
+    <div class="card shadow" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="loading Image">
+      <div class="card-body">
+        <h5 class="card-title"><a href="admin-view-teacher" style="text-decoration: none;color:black;">Total Teacher</a></h5>
+        <p class="card-text"><i class="fas fa-chalkboard-teacher f-left"></i><span>   {{total_teacher}}</span></p>
+      </div>
+    </div>
+    </div>
+
+    <div class="col align-self-center">
+    <div class="card shadow" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1506704810770-7e9bbab1094b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="loading Image">
+      <div class="card-body">
+        <h5 class="card-title"><a href="admin-view-pending-teacher" style="text-decoration: none;color:black;">Total Pending Teacher</a> </h5>
+        <p class="card-text"><i class="fas fa-spinner f-left"></i><span>     {{pending_teacher}}</span></p>
+      </div>
+    </div>
+    </div>
+
+    <div class="col align-self-center">
+    <div class="card shadow" style="width: 18rem;">
+      <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="loading Image">
+      <div class="card-body">
+        <h5 class="card-title"><a href="admin-view-teacher-salary" style="text-decoration: none;color:black;">Total Teacher Salary</a></h5>
+        <p class="card-text"><i class="fas fa-rupee-sign f-left">  </i><span>  {{salary}}</span></p>
+      </div>
+    </div>
+    </div>
+
+    
+    </div>
+    </div>
+    </div>
+
+
+
+<br><br>
+
+{% endblock content %}

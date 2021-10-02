@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+    
+  <!-- navbar starts -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <p class="navbar-brand">Test Me</p>
+    </div>
+  </nav>
+  <!-- navbar ends  -->
+    <div class="container my-4">
+        <div class="jumbotron">
+            <h3 class="text-center">Before you start the Exam, here are the rules</h3>
+            <div class="row">
+
+                <div class="card border-info mx-4 my-4">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Exam Details :</h4>
+                        <p class="card-text">
+                            </p><ul style="list-style:decimal;">
+                                <li>Exam Name : {{course.course_name}}</li>
+                                <li>Total Questions : {{total_questions}}</li>
+                                <li>Total Marks : {{total_marks}}</li>
+                            </ul>
+                        <p></p>
+
+
+
+                        <h4 class="card-title">Rules :</h4>
+                        <p class="card-text">
+                            </p><ul style="list-style:decimal;">
+                                <li>All questions are multiple choice question.</li>
+                                <li><span class="text-danger">Only one choice is correct.</span></li>
+                                <li>Every question carries different marks.
+                                </li>
+                    
+                                <li>The exam is auto submitted when the timer runs out, keep an eye on it.</li>
+                                <li>Questions are displayed randomly for every user.</li>
+                                <li>You can check your marks immediately when you submit the answer.</li>
+                                <li>The test is automatically proctored, using mobile phones during the exam or performing any malpractice <span class="text-danger">will get you disqualified. </span> </li>
+                            </ul>
+                        <p></p>
+                        <a href="{% url 'start-exam' course.id  %}" class="btn btn-info">Let's Start</a>
+                    </div>  
+                    <div class="card-footer">Best Of Luck</div>  
+                </div>  
+            </div>  
+        </div>
+    </div>
+</body>
+</html>

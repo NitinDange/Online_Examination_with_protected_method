@@ -1,0 +1,25 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<span class="border rounded shadow">
+<div class="m-2" style="min-width: 500px">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Exam Name</th>
+          <th>View Marks</th>
+        </tr>
+      </thead>
+      {% for t in courses %}
+      <tr>
+        <td> {{t.course_name}}</td>
+        <td><a class="btn btn-danger btn-sm" href="{% url 'check-marks' t.id  %}"><span class="bi bi-eye"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+
+</div>
+</span>
+
+{% endblock content %}

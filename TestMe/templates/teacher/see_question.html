@@ -1,0 +1,34 @@
+{% extends 'teacher/teacherbase.html' %}
+{% block content %}
+{%load static%}
+
+
+<span class="border rounded shadow">
+  <div class="m-3">
+    <h5>Questions</h5>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Question</th>
+         
+          <th>Marks</th>
+          <th>Delete Question</th>
+        </tr>
+      </thead>
+      {% for c in questions %}
+      <tr>
+
+        <td> {{c.question}}</td>
+        
+        <td>{{c.marks}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'remove-question' c.id  %}"><span class="bi bi-trash"></span></a></td>
+        
+      </tr>
+      {% endfor %}
+    </table>
+</div>
+</span>
+
+<br><br>
+{% endblock content %}

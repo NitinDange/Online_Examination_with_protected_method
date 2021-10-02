@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{course.course_name}} Examination</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- navbar starts -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <p class="navbar-brand">Test Me</p>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <p class="btn btn-primary" style:"position: right">Time left : <span id="timer"></span></p>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- navbar ends  -->
+    
+    <div class="" style="max-width:90%; margin: auto;">
+    <form class="form" autocomplete="off" onsubmit="return saveAns()" action="/student/calculate-marks" method="POST">
+      {% csrf_token %}
+      <div class="row ">
+      
+      <div class="col">
+      <br><br>
+      <h1 style="text-align: center">Exam Name - <span class="text-primary">{{course.course_name}}</span></h1>
+      <br><br>
+      </div>
+      
+      <div class="col d-flex justify-content-end">
+      <br>
+        <video id="video" autoplay style="max-width:200px;"></video>
+      </div>
+
+      </div>
+      <hr>
+      <br><br>
+      {% for q in questions%}
+
+        <div class="card border rounded shadow">
+        <div class="card-body m-2">
+          <h3>{{ forloop.counter }}. {{q.question}}</h3>
+          <h4 style="text-align: right">[Marks {{q.marks}}]</h4>
+
+          <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa"/>
+
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option1}}" value="Option1"/>
+            <label class="form-check-label" for="option1"> {{q.option1}} </label>
+          </div>
+
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option2}}" value="Option2"/>
+            <label class="form-check-label" for="option2"> {{q.option2}} </label>
+          </div>
+
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option3}}" value="Option3"/>
+            <label class="form-check-label" for="option3"> {{q.option3}} </label>
+          </div>
+
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option4}}" value="Option4"/>
+            <label class="form-check-label" for="option4"> {{q.option4}} </label>
+          </div>
+        </div>
+        </div>
+      <br><br>
+      
+      {% endfor %}
+      <br>
+      <hr>
+      <div style="margin:auto; width: 100px;">
+        <input class="btn btn-success btn-lg" type="submit" value="Submit" />
+      </div>
+    </form>
+    </div>
+    <br><br>
+
+  <script>
+    //timer code
+    window.onload = function begin() {
+      document.getElementById("timer").innerHTML = 30 + ":" + 00;
+      startTimer();
+    };
+
+    function startTimer() {
+      var presentTime = document.getElementById("timer").innerHTML;
+      var timeArray = presentTime.split(/[:]+/);
+      var m = timeArray[0];
+      var s = checkSecond(timeArray[1] - 1);
+      if (s == 59) {
+        m = m - 1;
+      }
+      if (m < 0) {
+        document.getElementById("quiz").submit();
+      }
+      document.getElementById("timer").innerHTML = m + ":" + s;
+      setTimeout(startTimer, 1000);
+    }
+
+    function checkSecond(sec) {
+      if (sec < 10 && sec >= 0) {
+        sec = "0" + sec;
+      }
+      if (sec < 0) {
+        sec = "59";
+      }
+      return sec;
+    }
+
+    //saves input
+    function saveAns() {
+      var ele = document.getElementsByTagName("input");
+      for (i = 0; i < ele.length; i++) {
+        if ((ele[i].type = "radio")) {
+          if (ele[i].checked) {
+            setCookie(ele[i].name, ele[i].value, 3);
+          }
+        }
+      }
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+  <script src="{% static 'js\script.js' %}"></script>
+</body>
+</html>
